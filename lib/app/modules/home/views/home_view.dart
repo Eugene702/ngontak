@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:ngontak/app/routes/app_pages.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../controllers/home_controller.dart';
@@ -20,19 +21,24 @@ class HomeView extends GetView<HomeController> {
               scrolledUnderElevation: 0.0,
               backgroundColor: Colors.transparent,
               clipBehavior: Clip.none,
-              title: SearchAnchor.bar(
-                barHintText: "Cari kontak kamu disini....",
-                barElevation: WidgetStateProperty.resolveWith((_) => 0.0),
-                barBackgroundColor:
-                    WidgetStateColor.resolveWith((_) => Colors.grey.shade300),
-                barTrailing: [
-                  IconButton(onPressed: () {}, icon: const FlutterLogo())
-                ],
-                suggestionsBuilder: (context, controller) => List.generate(
-                  5,
-                  (index) => ListTile(
-                    leading: const FlutterLogo(),
-                    title: Text("Text ${index + 1}"),
+              title: Padding(
+                padding: EdgeInsets.only(
+                  top: .4.dp
+                ),
+                child: SearchAnchor.bar(
+                  barHintText: "Cari kontak kamu disini....",
+                  barElevation: WidgetStateProperty.resolveWith((_) => 0.0),
+                  barBackgroundColor:
+                      WidgetStateColor.resolveWith((_) => Colors.grey.shade300),
+                  barTrailing: [
+                    IconButton(onPressed: () {}, icon: const FlutterLogo())
+                  ],
+                  suggestionsBuilder: (context, controller) => List.generate(
+                    5,
+                    (index) => ListTile(
+                      leading: const FlutterLogo(),
+                      title: Text("Text ${index + 1}"),
+                    ),
                   ),
                 ),
               ),
@@ -48,7 +54,7 @@ class HomeView extends GetView<HomeController> {
                       shrinkWrap: true,
                       itemCount: 50,
                       itemBuilder: (context, index) => ListTile(
-                        onTap: (){},
+                        onTap: () => Get.toNamed(Routes.DETAIL),
                         leading: const FlutterLogo(),
                         title: Text("Text ${index + 1}"),
                       ),
@@ -59,7 +65,7 @@ class HomeView extends GetView<HomeController> {
         ),
       ),
       floatingActionButton: IconButton.filled(
-        onPressed: () {},
+        onPressed: () => Get.toNamed(Routes.ADD),
         iconSize: .35.dp,
         tooltip: "Tambah Kontak",
         style: IconButton.styleFrom(
