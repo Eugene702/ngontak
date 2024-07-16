@@ -1,6 +1,8 @@
 import 'package:ngontak/app/database/schema.dart' as ngontak;
 import 'package:realm/realm.dart';
 
+final appDB = App(AppConfiguration("ngontak-ajofgnd"));
+
 class Database {
   late final Realm realm;
 

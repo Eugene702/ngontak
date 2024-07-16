@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -48,8 +49,11 @@ class LoginController extends GetxController {
 
       isLoading.value = false;
     } catch (e) {
+        print(e);
       isLoading.value = false;
       _showErrorDialog('Kesalahan pada server!');
+      if (kDebugMode) {
+      }
     }
   }
 

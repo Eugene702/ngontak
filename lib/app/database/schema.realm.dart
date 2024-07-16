@@ -98,8 +98,10 @@ class Contact extends _Contact with RealmEntity, RealmObjectBase, RealmObject {
     register(_toEJson, _fromEJson);
     return SchemaObject(ObjectType.realmObject, Contact, 'Contact', [
       SchemaProperty('_id', RealmPropertyType.objectid, primaryKey: true),
-      SchemaProperty('name', RealmPropertyType.string),
-      SchemaProperty('phone', RealmPropertyType.string),
+      SchemaProperty('name', RealmPropertyType.string,
+          indexType: RealmIndexType.fullText),
+      SchemaProperty('phone', RealmPropertyType.string,
+          indexType: RealmIndexType.fullText),
       SchemaProperty('createdAt', RealmPropertyType.timestamp),
       SchemaProperty('user', RealmPropertyType.object,
           optional: true, linkTarget: 'User'),

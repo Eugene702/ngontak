@@ -1,1 +1,30 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"ngontak-app","appId":"1:119672578414:android:6f3b7acfbac52a2499217f","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"ngontak-app","configurations":{"android":"1:119672578414:android:6f3b7acfbac52a2499217f"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "ngontak-app",
+          "appId": "1:119672578414:android:6f3b7acfbac52a2499217f",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "ngontak-app",
+          "configurations": {
+            "android": "1:119672578414:android:6f3b7acfbac52a2499217f"
+          }
+        }
+      }
+    }
+  },
+  "emulators": {
+    "auth": {
+      "port": 9099
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  }
+}

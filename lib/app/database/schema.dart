@@ -6,7 +6,10 @@ class _Contact{
   @PrimaryKey()
   late ObjectId _id;
 
+  @Indexed(RealmIndexType.fullText)
   late String name;
+
+  @Indexed(RealmIndexType.fullText)
   late String phone;
   late DateTime createdAt;
   late _User? user;

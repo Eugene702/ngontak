@@ -5,17 +5,12 @@ import 'package:ngontak/app/database/database.dart';
 import 'package:ngontak/app/routes/app_pages.dart';
 import 'package:ngontak/app/database/schema.dart' as schema;
 
-class HomeController extends GetxController with WidgetsBindingObserver {
+class HomeController extends GetxController {
   final Database _db = Database();
   RxBool isLoading = false.obs;
-  final RxInt count = 50.obs;
   RxList<schema.Contact> contacts = <schema.Contact>[].obs;
-
-  @override
-  void onInit() {
-    super.onInit();
-    WidgetsBinding.instance.addObserver(this);
-  }
+  RxList<schema.Contact> searchContacts = <schema.Contact>[].obs;
+  SearchController searchController = SearchController();
 
   @override
   void onReady() {
@@ -27,27 +22,25 @@ class HomeController extends GetxController with WidgetsBindingObserver {
     }
   }
 
-  @override
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    super.dispose();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    state = state;
-    print(state);
-    print(":::::::");
-  }
-
   Future<void> getData() async {
     isLoading.value = true;
     await _db.initialize();
-    final result = _db.realm
+    _db.realm
         .query<schema.Contact>(
             "user._id == '${FirebaseAuth.instance.currentUser?.uid}'")
-        .toList();
-    contacts.value = result;
+        .changes
+        .listen((changes) {
+      contacts.value = changes.results.toList();
+    });
     isLoading.value = false;
+  }
+
+  List<schema.Contact> onSearch(String value) {
+    if (value.isNotEmpty) {
+      return _db.realm.query<schema.Contact>(
+          "user._id == '${FirebaseAuth.instance.currentUser?.uid}' AND name CONTAINS[c] '$value' OR phone CONTAINS[c] '$value'").toList();
+    } else{
+      return [];
+    }
   }
 }

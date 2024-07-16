@@ -23,9 +23,7 @@ class HomeView extends GetView<HomeController> {
               backgroundColor: Colors.transparent,
               clipBehavior: Clip.none,
               title: Padding(
-                padding: EdgeInsets.only(
-                  top: .4.dp
-                ),
+                padding: EdgeInsets.only(top: .4.dp),
                 child: SearchAnchor.bar(
                   barHintText: "Cari kontak kamu disini....",
                   barElevation: WidgetStateProperty.resolveWith((_) => 0.0),
@@ -34,13 +32,14 @@ class HomeView extends GetView<HomeController> {
                   barTrailing: [
                     IconButton(onPressed: () {}, icon: const FlutterLogo())
                   ],
-                  suggestionsBuilder: (context, controller) => List.generate(
-                    5,
-                    (index) => ListTile(
-                      leading: const FlutterLogo(),
-                      title: Text("Text ${index + 1}"),
-                    ),
-                  ),
+                  searchController: controller.searchController,
+                  suggestionsBuilder: (context, searchController){
+                    return controller.onSearch(searchController.text).map((e) => ListTile(
+                      title: Text(e.name),
+                      subtitle: Text(e.phone),
+                      onTap: () => Get.toNamed(Routes.DETAIL),
+                    )).toList();
+                  }
                 ),
               ),
             ),
@@ -61,7 +60,8 @@ class HomeView extends GetView<HomeController> {
                             onTap: () => Get.toNamed(Routes.DETAIL),
                             leading: CircleAvatar(
                               backgroundColor: Colors.transparent,
-                              backgroundImage: NetworkImage(controller.contacts[index].user!.picture),
+                              backgroundImage: NetworkImage(
+                                  controller.contacts[index].user!.picture),
                             ),
                             title: Text(controller.contacts[index].name),
                           ),
