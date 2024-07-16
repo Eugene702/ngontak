@@ -1,23 +1,53 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ngontak/app/database/database.dart';
+import 'package:ngontak/app/routes/app_pages.dart';
+import 'package:ngontak/app/database/schema.dart' as schema;
 
-class HomeController extends GetxController {
-  //TODO: Implement HomeController
+class HomeController extends GetxController with WidgetsBindingObserver {
+  final Database _db = Database();
+  RxBool isLoading = false.obs;
+  final RxInt count = 50.obs;
+  RxList<schema.Contact> contacts = <schema.Contact>[].obs;
 
-  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void onReady() {
     super.onReady();
+    if (FirebaseAuth.instance.currentUser == null) {
+      Get.offAllNamed(Routes.LOGIN);
+    } else {
+      getData();
+    }
   }
 
   @override
-  void onClose() {
-    super.onClose();
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
   }
 
-  void increment() => count.value++;
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    state = state;
+    print(state);
+    print(":::::::");
+  }
+
+  Future<void> getData() async {
+    isLoading.value = true;
+    await _db.initialize();
+    final result = _db.realm
+        .query<schema.Contact>(
+            "user._id == '${FirebaseAuth.instance.currentUser?.uid}'")
+        .toList();
+    contacts.value = result;
+    isLoading.value = false;
+  }
 }

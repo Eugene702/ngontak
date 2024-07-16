@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "119672578414",
+    "project_id": "ngontak-app",
+    "storage_bucket": "ngontak-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119672578414:android:6f3b7acfbac52a2499217f",
+        "android_client_info": {
+          "package_name": "com.ngontak.ngontak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119672578414-m77kokuuoqrnt8iriuvd4nslqoteopq4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpwIiIpUQB2Yt31smCoO_nS4WOAOlNUwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119672578414-m77kokuuoqrnt8iriuvd4nslqoteopq4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "119672578414-j3vrliksehsl9v77t1560msnbu1ivmd3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ngontak.ngontak"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

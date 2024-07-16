@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ngontak/app/routes/app_pages.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -49,14 +50,22 @@ class HomeView extends GetView<HomeController> {
                     padding: EdgeInsets.symmetric(
                       vertical: .3.dp,
                     ),
-                    child: ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: 50,
-                      itemBuilder: (context, index) => ListTile(
-                        onTap: () => Get.toNamed(Routes.DETAIL),
-                        leading: const FlutterLogo(),
-                        title: Text("Text ${index + 1}"),
+                    child: Obx(
+                      () => ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: controller.contacts.length,
+                        itemBuilder: (context, index) => Skeletonizer(
+                          enabled: controller.isLoading.value,
+                          child: ListTile(
+                            onTap: () => Get.toNamed(Routes.DETAIL),
+                            leading: CircleAvatar(
+                              backgroundColor: Colors.transparent,
+                              backgroundImage: NetworkImage(controller.contacts[index].user!.picture),
+                            ),
+                            title: Text(controller.contacts[index].name),
+                          ),
+                        ),
                       ),
                     ))
               ]),
