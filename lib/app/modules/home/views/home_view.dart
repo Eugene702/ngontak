@@ -30,7 +30,7 @@ class HomeView extends GetView<HomeController> {
                     barBackgroundColor: WidgetStateColor.resolveWith(
                         (_) => Colors.grey.shade300),
                     barTrailing: [
-                      IconButton(onPressed: () {}, icon: const FlutterLogo())
+                      IconButton(onPressed: () => controller.logout(), icon: const Icon(Icons.logout_rounded))
                     ],
                     searchController: controller.searchController,
                     suggestionsBuilder: (context, searchController) {
@@ -39,7 +39,7 @@ class HomeView extends GetView<HomeController> {
                           .map((e) => ListTile(
                                 onTap: () => Get.toNamed(Routes.DETAIL,
                                     arguments: e.id),
-                                leading: CircleAvatar(
+                                leading: CircleAvatar( 
                                   backgroundColor: Colors.transparent,
                                   backgroundImage: NetworkImage(e.user!.picture),
                                 ),

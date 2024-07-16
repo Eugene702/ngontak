@@ -44,6 +44,7 @@ class EditView extends GetView<EditController> {
 
             TextFormField(
               controller: controller.telp,
+              keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                 hintText: "Masukan no telp",
                 enabledBorder: OutlineInputBorder(

@@ -60,7 +60,8 @@ class EditController extends GetxController {
           Get.arguments,
           name.text,
           telp.text,
-          contact!.createdAt
+          contact!.createdAt,
+          user: contact!.user,
         );
 
         _database.realm.write(() {

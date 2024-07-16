@@ -60,6 +60,7 @@ class AddView extends GetView<AddController> {
             Obx(
               () => TextFormField(
                 controller: controller.telp,
+                keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   hintText: "Masukan no telp",
                   errorText: controller.telpError.value.isNotEmpty ? controller.telpError.value : null,
