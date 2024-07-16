@@ -6,13 +6,13 @@ final appDB = App(AppConfiguration("ngontak-ajofgnd"));
 class Database {
   late final Realm realm;
 
-  Future<void> initialize() async {
+  Future<void> initialize({List<SchemaObject> schemaObject = const []}) async {
     final app = App(AppConfiguration("ngontak-ajofgnd"));
     final user = app.currentUser ?? await app.logIn(Credentials.anonymous());
-    realm = Realm(Configuration.flexibleSync(user, [
+    realm = Realm(Configuration.flexibleSync(user, schemaObject.isEmpty ? [
       ngontak.User.schema,
-      ngontak.Contact.schema
-    ]));
+      ngontak.Contact.schema,
+    ] : schemaObject));
 
     await addSubscription();
   }

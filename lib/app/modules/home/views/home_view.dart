@@ -25,22 +25,29 @@ class HomeView extends GetView<HomeController> {
               title: Padding(
                 padding: EdgeInsets.only(top: .4.dp),
                 child: SearchAnchor.bar(
-                  barHintText: "Cari kontak kamu disini....",
-                  barElevation: WidgetStateProperty.resolveWith((_) => 0.0),
-                  barBackgroundColor:
-                      WidgetStateColor.resolveWith((_) => Colors.grey.shade300),
-                  barTrailing: [
-                    IconButton(onPressed: () {}, icon: const FlutterLogo())
-                  ],
-                  searchController: controller.searchController,
-                  suggestionsBuilder: (context, searchController){
-                    return controller.onSearch(searchController.text).map((e) => ListTile(
-                      title: Text(e.name),
-                      subtitle: Text(e.phone),
-                      onTap: () => Get.toNamed(Routes.DETAIL),
-                    )).toList();
-                  }
-                ),
+                    barHintText: "Cari kontak kamu disini....",
+                    barElevation: WidgetStateProperty.resolveWith((_) => 0.0),
+                    barBackgroundColor: WidgetStateColor.resolveWith(
+                        (_) => Colors.grey.shade300),
+                    barTrailing: [
+                      IconButton(onPressed: () {}, icon: const FlutterLogo())
+                    ],
+                    searchController: controller.searchController,
+                    suggestionsBuilder: (context, searchController) {
+                      return controller
+                          .onSearch(searchController.text)
+                          .map((e) => ListTile(
+                                onTap: () => Get.toNamed(Routes.DETAIL,
+                                    arguments: e.id),
+                                leading: CircleAvatar(
+                                  backgroundColor: Colors.transparent,
+                                  backgroundImage: NetworkImage(e.user!.picture),
+                                ),
+                                title: Text(e.name),
+                                subtitle: Text(e.phone),
+                              ))
+                          .toList();
+                    }),
               ),
             ),
             SliverList(
@@ -57,13 +64,15 @@ class HomeView extends GetView<HomeController> {
                         itemBuilder: (context, index) => Skeletonizer(
                           enabled: controller.isLoading.value,
                           child: ListTile(
-                            onTap: () => Get.toNamed(Routes.DETAIL),
+                            onTap: () => Get.toNamed(Routes.DETAIL,
+                                arguments: controller.contacts[index].id),
                             leading: CircleAvatar(
                               backgroundColor: Colors.transparent,
                               backgroundImage: NetworkImage(
                                   controller.contacts[index].user!.picture),
                             ),
                             title: Text(controller.contacts[index].name),
+                            subtitle: Text(controller.contacts[index].phone),
                           ),
                         ),
                       ),

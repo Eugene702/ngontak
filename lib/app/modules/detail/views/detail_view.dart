@@ -14,7 +14,7 @@ class DetailView extends GetView<DetailController> {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () => Get.toNamed(Routes.EDIT),
+            onPressed: () => Get.toNamed(Routes.EDIT, arguments: Get.arguments),
             icon: const Icon(Icons.edit),
           ),
         
@@ -27,40 +27,31 @@ class DetailView extends GetView<DetailController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Align(
-              alignment: Alignment.center,
-              child: CircleAvatar(
-                backgroundImage: const NetworkImage("https://lh3.google.com/u/0/ogw/AF2bZyhZrkkMoUi83600Y5IKhrpTncYKEhPmQdcwMCerRO3pgA=s32-c-mo"),
-                backgroundColor: Colors.transparent,
-                radius: .7.dp,
-              ),
-            ),
-        
             SizedBox(height: .4.h),
             ListTile(
               title: const Text("Name"),
-              subtitle: const Text("John Doe"),
+              subtitle: Obx(() => Text(controller.name.value)),
             ),
 
             ListTile(
               title: const Text("No Telp"),
-              subtitle: const Text("088223755564")
+              subtitle: Obx(() => Text(controller.phone.value)),
             ),
 
             MaterialButton(
               onPressed: () => showDialog(
                 context: context,
                 builder: (context) =>  AlertDialog(
-                  title: Text("Hapus Kontak"),
-                  content: Text("Apakah anda yakin ingin menghapus kontak ini?"),
+                  title: const Text("Hapus Kontak"),
+                  content: const Text("Apakah anda yakin ingin menghapus kontak ini?"),
                   actions: [
                     TextButton(
                       onPressed: () => Get.back(),
-                      child: Text("Batal"),
+                      child: const Text("Batal"),
                     ),
                     TextButton(
-                      onPressed: () => Get.back(),
-                      child: Text("Hapus"),
+                      onPressed: () => controller.deleteData(),
+                      child: const Text("Hapus"),
                     )
                   ],
                 ),
@@ -72,7 +63,7 @@ class DetailView extends GetView<DetailController> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(.2.dp)
               ),
-              child: Text("Hapus Kontak"),
+              child: const Text("Hapus Kontak"),
             )
           ],
         ),

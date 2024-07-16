@@ -13,6 +13,8 @@ class _Contact{
   late String phone;
   late DateTime createdAt;
   late _User? user;
+
+  ObjectId get id => _id;
 }
 
 @RealmModel()

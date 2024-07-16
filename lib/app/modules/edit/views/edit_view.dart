@@ -68,7 +68,7 @@ class EditView extends GetView<EditController> {
                 horizontal: .4.dp
               ),
               child: MaterialButton(
-                onPressed: (){},
+                onPressed: () => controller.saveData(),
                 color: Colors.blue.shade900,
                 textColor: Colors.white,
                 elevation: 0.0,

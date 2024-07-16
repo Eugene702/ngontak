@@ -24,7 +24,12 @@ class HomeController extends GetxController {
 
   Future<void> getData() async {
     isLoading.value = true;
-    await _db.initialize();
+    await _db.initialize(
+      schemaObject: [
+        schema.User.schema,
+        schema.Contact.schema,
+      ],
+    );
     _db.realm
         .query<schema.Contact>(
             "user._id == '${FirebaseAuth.instance.currentUser?.uid}'")
