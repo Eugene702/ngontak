@@ -41,7 +41,7 @@ class HomeView extends GetView<HomeController> {
                                     arguments: e.id),
                                 leading: CircleAvatar( 
                                   backgroundColor: Colors.transparent,
-                                  backgroundImage: NetworkImage(e.user!.picture),
+                                  backgroundImage: NetworkImage("https://ui-avatars.com/api/?name=${e.name}"),
                                 ),
                                 title: Text(e.name),
                                 subtitle: Text(e.phone),
@@ -68,9 +68,7 @@ class HomeView extends GetView<HomeController> {
                                 arguments: controller.contacts[index].id),
                             leading: CircleAvatar(
                               backgroundColor: Colors.transparent,
-                              backgroundImage: NetworkImage(
-                                  controller.contacts[index].user!.picture),
-                            ),
+                              backgroundImage: NetworkImage("https://ui-avatars.com/api/?name=${controller.contacts[index].name}"),),
                             title: Text(controller.contacts[index].name),
                             subtitle: Text(controller.contacts[index].phone),
                           ),

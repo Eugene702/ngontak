@@ -404,18 +404,18 @@ packages:
     dependency: transitive
     description:
       name: graphs
-      sha256: aedc5a15e78fc65a6e23bcd927f24c64dd995062bcd1ca6eda65a3cff92a4d19
+      sha256: "741bbf84165310a68ff28fe9e727332eef1407342fca52759cb21ad8177bb8d0"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.1"
+    version: "2.3.2"
   http:
     dependency: transitive
     description:
       name: http
-      sha256: "761a297c042deedc1ffbb156d6e2af13886bb305c2a343a4d972504cd67dd938"
+      sha256: b9c29a161230ee03d3ccf545097fccd9b87a5264228c5d348202e0f0c28f9010
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.1"
+    version: "1.2.2"
   http_multi_server:
     dependency: transitive
     description:
@@ -604,34 +604,34 @@ packages:
     dependency: "direct main"
     description:
       name: realm
-      sha256: "8dd81788c80ccdb7721cfeec79dd22925f4f1ca7a52fcd43d1f9a5bdc982c333"
+      sha256: "939e27315fc5f5c6dc52ee87d9b1d5e44936718b6c0f9fd7d9d0a96d8e025ac1"
       url: "https://pub.dev"
     source: hosted
-    version: "3.2.0"
+    version: "3.3.0"
   realm_common:
     dependency: transitive
     description:
       name: realm_common
-      sha256: f1c5e4de8ac37ee2674be49e6e21496016f8ae45ab463972eb8df0f564c8ce33
+      sha256: "73919ec7a92cca6d6889cbf2688cca53e92779a115f5bba5bc69eb341c29581f"
       url: "https://pub.dev"
     source: hosted
-    version: "3.2.0"
+    version: "3.3.0"
   realm_dart:
     dependency: transitive
     description:
       name: realm_dart
-      sha256: "76a06c98261032e082ef586e68913d7f217abfe7f706ea9f39d82c9c9325784e"
+      sha256: "5ba69ba9a7533beedb23b64ea16291728c1cff2143f699f82bcfae958fcec50b"
       url: "https://pub.dev"
     source: hosted
-    version: "3.2.0"
+    version: "3.3.0"
   realm_generator:
     dependency: transitive
     description:
       name: realm_generator
-      sha256: "4d277944ca845f5a78abda22d8d040a33a50f506e822ee8783bc658e5f792e28"
+      sha256: ab1743027815a543faf348b12361662a2bf8ec7b9bcc0d9847276db70430c79e
       url: "https://pub.dev"
     source: hosted
-    version: "3.2.0"
+    version: "3.3.0"
   responsive_sizer:
     dependency: "direct main"
     description:
@@ -809,18 +809,18 @@ packages:
     dependency: transitive
     description:
       name: web_socket
-      sha256: "24301d8c293ce6fe327ffe6f59d8fd8834735f0ec36e4fd383ec7ff8a64aa078"
+      sha256: "3c12d96c0c9a4eec095246debcea7b86c0324f22df69893d538fcc6f1b8cce83"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.5"
+    version: "0.1.6"
   web_socket_channel:
     dependency: transitive
     description:
       name: web_socket_channel
-      sha256: a2d56211ee4d35d9b344d9d4ce60f362e4f5d1aafb988302906bd732bc731276
+      sha256: "9f187088ed104edd8662ca07af4b124465893caf063ba29758f97af57e61da8f"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.1"
   yaml:
     dependency: transitive
     description:
